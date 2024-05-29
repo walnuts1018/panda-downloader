@@ -1,5 +1,5 @@
 import DownloadIcon from "../icons/download";
-import { download } from "./download";
+import { download } from "./helper";
 import "./Download.css";
 
 function Download() {
@@ -9,7 +9,7 @@ function Download() {
         title="Download"
         className="flex justify-center items-center h-full"
         type="button"
-        onClick={async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        onClick={async (e) => {
           const anchorElement =
             e.currentTarget.parentElement?.parentElement?.parentElement?.getElementsByClassName(
               "link-container"
