@@ -1,0 +1,19 @@
+button {
+  border: none !important;
+  background: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  color: black !important;
+}
+
+.download:hover {
+  background-color: var(--sakai-color-gray--lighter-4) !important;
+}
+
+.is-selected .download:hover {
+  background-color: var(--panda-black--lighter-4) !important;
+}
+
+.download-root:last-child {
+  margin-right: 8px;
+}
