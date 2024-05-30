@@ -1,8 +1,12 @@
 import DownloadIcon from "../icons/download";
+import LoadingIcon from "../icons/loading";
 import { download } from "./helper";
+import { useState } from "react";
 import "./Download.css";
 
 function Download() {
+  const [isDownloading, setIsDownloading] = useState(false);
+
   return (
     <div className="download flex justify-center items-center">
       <button
@@ -20,10 +24,13 @@ function Download() {
           if (!siteID) {
             return;
           }
+
+          setIsDownloading(true);
           await download(siteID, siteName);
+          setIsDownloading(false);
         }}
       >
-        <DownloadIcon className="h-full w-full object-contain text-black" />
+        {isDownloading ? <LoadingIcon /> : <DownloadIcon />}
       </button>
     </div>
   );

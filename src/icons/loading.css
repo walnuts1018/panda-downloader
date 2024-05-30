@@ -1,0 +1,8 @@
+/* https://webcode.tools/css-generator/keyframe-animation */
+
+.loading-icon {
+  animation: myAnim 1s infinite;
+}
+
+@keyframes myAnim {
+}
