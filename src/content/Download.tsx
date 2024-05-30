@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import DownloadIcon from "../icons/download";
 import LoadingIcon from "../icons/loading";
 import { download } from "./helper";
