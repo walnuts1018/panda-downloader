@@ -14,6 +14,7 @@ function App() {
       </Advice>
       <div>
         {/*✅ PandAのリンクが上野動物園に...？正しいリンクに直そう！*/}
+        {/* href="https://panda.ecs.kyoto-u.ac.jp/portal/" */}
         <p className="text-lg">
           PandAは
           <a href="https://www.ueno-panda.jp/" target="_blank" rel="noopener">
