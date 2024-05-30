@@ -42,18 +42,26 @@ export async function download(siteID: string, siteName: string) {
     console.error("No files found");
     return;
   }
-  const zip = new JSZip();
+  const zip = new JSZip().folder(restrictFileName(siteName));
+  if (!zip) {
+    console.error("Failed to create a folder", siteName);
+    return;
+  }
 
   for (const url of urls) {
-    const filepath = url.match(/group\/.+\/(.+)/)?.[1];
+    const filepath = decodeURI(url).match(/group\/.+?\/(.+)/)?.[1];
+    if (!filepath) {
+      console.error("Invalid URL", url);
+      continue;
+    }
     const filename = filepath?.split("/")?.pop();
     if (!filename) {
       console.error("Invalid URL", url);
       continue;
     }
 
-    const nestedFolders = filepath?.split("/").slice(0, -1);
-    let currentFolder = zip;
+    const nestedFolders = filepath.split("/").slice(0, -1);
+    let currentFolder = zip
     if (nestedFolders) {
       for (const nestedFolder of nestedFolders) {
         const newFolder = currentFolder.folder(restrictFileName(nestedFolder));
@@ -68,6 +76,10 @@ export async function download(siteID: string, siteName: string) {
     try {
       const res = await fetch(url);
       const blob = await res.blob();
+      if (!currentFolder) {
+        console.error("Failed to create a folder", siteName);
+        break;
+      }
       currentFolder.file(restrictFileName(filename), blob);
     } catch (e) {
       console.error(e);
