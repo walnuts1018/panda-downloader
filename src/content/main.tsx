@@ -25,24 +25,27 @@ const addDownloadButton = function (element: Element) {
   );
 };
 
-const classNavigationParent = document.getElementById("topnav");
+function createDownloadButton() {
+  const classNavigationParent = document.getElementById("topnav");
+  if (classNavigationParent) {
+    Array.from(classNavigationParent.children).forEach((element) => {
+      addDownloadButton(element);
+    });
 
-if (classNavigationParent) {
-  Array.from(classNavigationParent.children).forEach((element) => {
-    addDownloadButton(element);
-  });
-
-  // comfortable PandAが追加でサイトを登録したときにもボタンを追加する
-  const observer = new MutationObserver((records) => {
-    records.forEach((record) => {
-      record.addedNodes.forEach((node) => {
-        if (node instanceof Element) {
-          addDownloadButton(node);
-        }
+    // Comfortable PandAが追加でサイトを登録したときにもボタンを追加する
+    const observer = new MutationObserver((records) => {
+      records.forEach((record) => {
+        record.addedNodes.forEach((node) => {
+          if (node instanceof Element) {
+            addDownloadButton(node);
+          }
+        });
       });
     });
-  });
-  observer.observe(classNavigationParent, {
-    childList: true,
-  });
+    observer.observe(classNavigationParent, {
+      childList: true,
+    });
+  }
 }
+
+createDownloadButton();

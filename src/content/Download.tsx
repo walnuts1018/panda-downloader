@@ -25,12 +25,16 @@ function Download() {
             return;
           }
 
-          setIsDownloading(true);
-          await download(siteID, siteName);
-          setIsDownloading(false);
+          // ✅ setIsDownloading関数を使って、ダウンロード中かどうかを管理しよう！
+          // ✅ download 関数に siteID と siteName を渡して、ダウンロードできるようにしよう！
         }}
       >
-        {isDownloading ? <LoadingIcon /> : <DownloadIcon />}
+        {isDownloading ? (
+          // ✅ <LoadingIcon /> を使ってダウンロード中なことを示そう！
+          <></>
+        ) : (
+          <DownloadIcon />
+        )}
       </button>
     </div>
   );
