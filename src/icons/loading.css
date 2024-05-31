@@ -1,8 +1,9 @@
 /* ✅https://webcode.tools/css-generator/keyframe-animation を使って、アニメーションを作ってみよう！ */
 
 .loading-icon {
-  animation: myAnim 1s infinite;
+  animation: myAnim 1s infinite; /*1つめの方のコードを貼り付け（Copy this to the element you want to animate. の方） */
 }
 
+/* 以下に2つめのコードを貼り付け（Copy this after the above selector. の方） */
 @keyframes myAnim {
 }
